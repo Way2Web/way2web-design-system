@@ -289,6 +289,36 @@ export namespace Components {
          */
         "type": 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
+    interface WayTextarea {
+        /**
+          * If `true`, the textarea should autofocus.
+         */
+        "autofocus": boolean;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled": boolean;
+        /**
+          * The textarea's label. Alternatively, you can use the label slot.
+         */
+        "label": string | undefined;
+        /**
+          * Specifies how many characters are allowed.
+         */
+        "maxlength": number;
+        /**
+          * The textarea's name attribute.
+         */
+        "name": string | undefined;
+        /**
+          * Specifies how many textarea rows to use.
+         */
+        "rows": number | undefined;
+        /**
+          * Specifies what type of textarea to use.
+         */
+        "type": string | undefined;
+    }
 }
 declare global {
     interface HTMLWayButtonElement extends Components.WayButton, HTMLStencilElement {
@@ -357,6 +387,12 @@ declare global {
         prototype: HTMLWayTagElement;
         new (): HTMLWayTagElement;
     };
+    interface HTMLWayTextareaElement extends Components.WayTextarea, HTMLStencilElement {
+    }
+    var HTMLWayTextareaElement: {
+        prototype: HTMLWayTextareaElement;
+        new (): HTMLWayTextareaElement;
+    };
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
         "way-dropdown": HTMLWayDropdownElement;
@@ -369,6 +405,7 @@ declare global {
         "way-radio-group": HTMLWayRadioGroupElement;
         "way-select": HTMLWaySelectElement;
         "way-tag": HTMLWayTagElement;
+        "way-textarea": HTMLWayTextareaElement;
     }
 }
 declare namespace LocalJSX {
@@ -681,6 +718,44 @@ declare namespace LocalJSX {
          */
         "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
+    interface WayTextarea {
+        /**
+          * If `true`, the textarea should autofocus.
+         */
+        "autofocus"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled"?: boolean;
+        /**
+          * The textarea's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string | undefined;
+        /**
+          * Specifies how many characters are allowed.
+         */
+        "maxlength"?: number;
+        /**
+          * The textarea's name attribute.
+         */
+        "name"?: string | undefined;
+        /**
+          * Emitted when the textarea loses focus.
+         */
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Specifies how many textarea rows to use.
+         */
+        "rows"?: number | undefined;
+        /**
+          * Specifies what type of textarea to use.
+         */
+        "type"?: string | undefined;
+    }
     interface IntrinsicElements {
         "way-button": WayButton;
         "way-dropdown": WayDropdown;
@@ -693,6 +768,7 @@ declare namespace LocalJSX {
         "way-radio-group": WayRadioGroup;
         "way-select": WaySelect;
         "way-tag": WayTag;
+        "way-textarea": WayTextarea;
     }
 }
 export { LocalJSX as JSX };
@@ -710,6 +786,7 @@ declare module "@stencil/core" {
             "way-radio-group": LocalJSX.WayRadioGroup & JSXBase.HTMLAttributes<HTMLWayRadioGroupElement>;
             "way-select": LocalJSX.WaySelect & JSXBase.HTMLAttributes<HTMLWaySelectElement>;
             "way-tag": LocalJSX.WayTag & JSXBase.HTMLAttributes<HTMLWayTagElement>;
+            "way-textarea": LocalJSX.WayTextarea & JSXBase.HTMLAttributes<HTMLWayTextareaElement>;
         }
     }
 }

@@ -19,3 +19,4 @@ export const WayRadio = /*@__PURE__*/createReactComponent<JSX.WayRadio, HTMLWayR
 export const WayRadioGroup = /*@__PURE__*/createReactComponent<JSX.WayRadioGroup, HTMLWayRadioGroupElement>('way-radio-group');
 export const WaySelect = /*@__PURE__*/createReactComponent<JSX.WaySelect, HTMLWaySelectElement>('way-select');
 export const WayTag = /*@__PURE__*/createReactComponent<JSX.WayTag, HTMLWayTagElement>('way-tag');
+export const WayTextarea = /*@__PURE__*/createReactComponent<JSX.WayTextarea, HTMLWayTextareaElement>('way-textarea');

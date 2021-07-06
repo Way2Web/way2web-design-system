@@ -128,3 +128,16 @@ export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', [
   'way-clear'
 ]);
 
+
+export const WayTextarea = /*@__PURE__*/ defineContainer<JSX.WayTextarea>('way-textarea', [
+  'type',
+  'name',
+  'disabled',
+  'maxlength',
+  'label',
+  'rows',
+  'autofocus',
+  'wayFocus',
+  'wayBlur'
+]);
+
