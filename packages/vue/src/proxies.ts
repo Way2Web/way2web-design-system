@@ -40,6 +40,18 @@ export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-d
 ]);
 
 
+export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input', [
+  'type',
+  'name',
+  'disabled',
+  'inline',
+  'size',
+  'label',
+  'wayFocus',
+  'wayBlur'
+]);
+
+
 export const WayMenu = /*@__PURE__*/ defineContainer<JSX.WayMenu>('way-menu', [
   'way-select'
 ]);
