@@ -198,8 +198,13 @@ export class WayDropdown {
   }
 
   getMenu() {
-    return this.panel
-      .querySelector('slot')
+    // return this.panel
+    //   .querySelector('slot')
+    //   .assignedElements({ flatten: true })
+    //   .filter(el => el.tagName.toLowerCase() === 'way-menu')[0] as HTMLWayMenuElement;
+
+    const slot = this.panel.querySelector('slot')!;
+    return slot
       .assignedElements({ flatten: true })
       .filter(el => el.tagName.toLowerCase() === 'way-menu')[0] as HTMLWayMenuElement;
   }

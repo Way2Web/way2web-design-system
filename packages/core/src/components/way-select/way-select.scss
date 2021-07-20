@@ -233,6 +233,31 @@
   height: 100%;
 }
 
+.select-search {
+  padding: var(--way-spacing-small);
+  width: 100%;
+
+  input {
+    width: 100%;
+    height: var(--way-form-element-height-medium);
+    font-family: var(--way-font-family);
+    font-size: var(--way-font-size-medium);
+    padding: var(--way-spacing-small);
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+::slotted(way-menu-item.filtered) {
+  display: none;
+}
+
 // Pill modifier
 // --------------------------------------------------
 

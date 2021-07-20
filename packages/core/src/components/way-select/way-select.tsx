@@ -23,6 +23,7 @@ export class WaySelect {
   labelId = `select-label-${id}`;
   helpTextId = `select-help-text-${id}`;
   menu: HTMLWayMenuElement;
+  searchInput: HTMLInputElement;
   resizeObserver: ResizeObserver;
 
   @Element() el: HTMLWaySelectElement;
@@ -83,6 +84,9 @@ export class WaySelect {
   /** This will be true when the control is in an invalid state. Validity is determined by the `required` prop. */
   @Prop({ mutable: true }) invalid = false;
 
+  /** Set to true to add an input for searchable the items */
+  @Prop() searchable = false;
+
   @Watch('disabled')
   handleDisabledChange() {
     if (this.disabled && this.isOpen) {
@@ -128,6 +132,7 @@ export class WaySelect {
     this.handleMenuSelect = this.handleMenuSelect.bind(this);
     this.handleSlotChange = this.handleSlotChange.bind(this);
     this.handleTagInteraction = this.handleTagInteraction.bind(this);
+    this.handleSearchInput = this.handleSearchInput.bind(this);
 
     this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
   }
@@ -223,7 +228,11 @@ export class WaySelect {
 
       // Focus on a menu item
       if (event.key === 'ArrowDown' && firstItem) {
-        firstItem.setFocus();
+        if (this.searchInput) {
+          this.searchInput.focus();
+        } else {
+          firstItem.setFocus();
+        }
         return;
       }
 
@@ -266,6 +275,8 @@ export class WaySelect {
       return;
     }
 
+    if (this.searchInput) this.searchInput.focus();
+
     this.resizeMenu();
     this.resizeObserver.observe(this.el);
     this.isOpen = true;
@@ -281,6 +292,18 @@ export class WaySelect {
     this.hasLabelSlot = hasSlot(this.el, 'label');
     this.syncItemsFromValue();
     this.reportDuplicateItemValues();
+  }
+
+  handleSearchInput() {
+    const menuItems = this.getItems();
+
+    menuItems.forEach(menuItem => {
+      if (menuItem.textContent.toLowerCase().includes(this.searchInput.value.toLowerCase())) {
+        if (menuItem.classList.contains('filtered')) menuItem.classList.remove('filtered');
+      } else {
+        if (!menuItem.classList.contains('filtered')) menuItem.classList.add('filtered');
+      }
+    });
   }
 
   handleTagInteraction(event: KeyboardEvent | MouseEvent) {
@@ -497,6 +520,18 @@ export class WaySelect {
           </div>
 
           <way-menu ref={el => (this.menu = el)} class="select-menu" onWay-select={this.handleMenuSelect}>
+            {this.searchable && (
+              <div class="select-search">
+                {/* FIXME: Replace with way-input once available */}
+                <input
+                  type="text"
+                  ref={el => (this.searchInput = el)}
+                  onInput={this.handleSearchInput}
+                  tabIndex={0}
+                  role="searchbox"
+                ></input>
+              </div>
+            )}
             <slot onSlotchange={this.handleSlotChange} />
           </way-menu>
         </way-dropdown>

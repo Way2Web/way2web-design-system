@@ -233,6 +233,10 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Set to true to add an input for searchable the items
+         */
+        "searchable": boolean;
+        /**
           * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
          */
         "setCustomValidity": (message: string) => Promise<void>;
@@ -583,6 +587,10 @@ declare namespace LocalJSX {
           * The select's required attribute.
          */
         "required"?: boolean;
+        /**
+          * Set to true to add an input for searchable the items
+         */
+        "searchable"?: boolean;
         /**
           * The select's size.
          */

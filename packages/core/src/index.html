@@ -47,6 +47,16 @@
       <h2>way-select</h2>
 
       <section>
+        <h3>Searchable</h3>
+
+        <way-select searchable>
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+        </way-select>
+      </section>
+
+      <section>
         <h3>Placeholders</h3>
 
         <way-select placeholder="Select one">
@@ -232,7 +242,13 @@
       <h2>way-menu</h2>
       <p>Including way-menu-item & way-menu-divider & way-menu-label</p>
 
-      <way-menu style="max-width: 200px; border: solid 1px var(--way-color-light); border-radius: var(--way-border-radius-medium)">
+      <way-menu
+        style="
+          max-width: 200px;
+          border: solid 1px var(--way-color-light);
+          border-radius: var(--way-border-radius-medium);
+        "
+      >
         <way-menu-label>Timetravel</way-menu-label>
         <way-menu-item value="undo" checked>Undo</way-menu-item>
         <way-menu-item value="redo">Redo</way-menu-item>
